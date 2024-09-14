@@ -1,0 +1,43 @@
+version: 0.0
+os: linux
+files:
+  - source: /index.html
+    destination: /var/www/html/
+  - source: /css/
+    destination: /var/www/html/css/
+  - source: /img/
+    destination: /var/www/html/img/
+  - source: /js/
+    destination: /var/www/html/js/
+  - source: /lib/
+    destination: /var/www/html/lib/
+  - source: /scss/
+    destination: /var/www/html/scss/
+  - source: /about.html
+    destination: /var/www/html/
+  - source: /booking.html
+    destination: /var/www/html/
+  - source: /bootstrap-restaurant-template.jpg
+    destination: /var/www/html/
+  - source: /contact.html
+    destination: /var/www/html/
+  - source: /menu.html
+    destination: /var/www/html/
+  - source: /service.html
+    destination: /var/www/html/
+  - source: /team.html
+    destination: /var/www/html/
+  - source: /testimonial.html
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: root
+    - location: scripts/start_server
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop_server
+      timeout: 300
+      runas: root
